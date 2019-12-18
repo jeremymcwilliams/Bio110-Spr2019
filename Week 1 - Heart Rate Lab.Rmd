@@ -1,0 +1,114 @@
+---
+title: "Bio 110 Heart Rate lab"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+## Intro to R and RStudio Server
+
+### Comments
+
+One of the most important things you can do with any scripting language is to add comments to your code. Comments are basically instructions or descriptions you insert in your code that aren't executed as code. They're sometimes referred to as "love letters to your future self".
+
+In R, a comment is preceded by a hash mark (#):
+
+```{r}
+# This is a comment. Use it to explain what's going on!
+
+```
+
+You don't have to comment every single command, but it's often a good idea to add enough comments so your future self (or collaborator) will understand your code.
+ 
+### Assigning variables
+
+One of the most common things to do in any scripting language is to create a variable and set it equal to something. In R, you use the "<-" (left-pointing arrow) to assign a value to a variable. The value can be an integer, text string, expression (e.g. "2+2"), or output of a function. Take a look at the example below:
+
+```{r}
+# assign a value to a:
+a<-"my value for a"
+
+# assign a value to myFavoriteNumber:
+myFavoriteNumber<-27
+
+# print a and myFavoriteNumber
+a
+myFavoriteNumber
+
+```
+
+Now it's your turn. In the code block below, set a variable "myVar" equal to five times 20, and then print it:
+
+```{r}
+#enter your code here
+
+
+```
+
+### Functions
+
+Functions are basically shortcut commands that perform a certain task. Functions usually take input values (often called "arguments"), and return some output. Let's take a look below at the "sqrt" function:
+
+```{r}
+# sets "value" equal to the sqaure root of 20
+value<-sqrt(20)
+
+value
+
+```
+
+One of the great things about RStudio is that you can quickly access documentation on functions by using the "help" function. Running this function will display documentation in the lower right-hand window:
+
+```{r}
+
+help(sqrt)
+
+```
+
+Notice in the "Arguments" section, "x" is labled as "a numeric or complex vector or array". This is a pretty key piece of information, mainly because sometimes you may want to explicitly tell the function which argument you're sending to the function. This is especially true when the function accepts lots of arguments. If you don't explicitly define the argument, the function will assume you're sending arguments in the order desrcibed in the documentation. Take a look at this example:
+
+```{r}
+sqrt(9)
+
+#explicitly defining arguments:
+sqrt(x=9)
+
+#this won't work:
+sqrt(y=9)
+
+```
+
+Why does the "x" work, but not the "y"? Because the documentation on sqrt defines the argument as "x".
+
+
+
+### Vectors
+
+Vectors are a type of data structure in R, usually referring to an array of values. To create a vector, you use the "c" function:
+
+```{r}
+myFirstVector<-c(1,2,3,4,5)
+
+#print myFirstVector
+myFirstVector
+```
+
+
+## Plotting Heart Rate
+
+
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
