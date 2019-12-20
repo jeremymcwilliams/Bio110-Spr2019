@@ -5,7 +5,10 @@ output:
   html_notebook: default
 ---
 
-## Intro to R and RStudio Server
+### Intro to R and RStudio Server
+
+
+
 
 ### Comments
 
@@ -74,12 +77,26 @@ sqrt(9)
 sqrt(x=9)
 
 #this won't work:
-sqrt(y=9)
+# sqrt(y=9)
 
 ```
 
 Why does the "x" work, but not the "y"? Because the documentation on sqrt defines the argument as "x".
 
+Now it's your turn. Use help to look up the "plot" function. Then use the plot function, and explicitly label the x value 20, and the y value 30.
+
+```{r}
+#enter and run your "help" code here 
+
+
+```
+
+
+```{r}
+#enter and run your "plot" code here
+
+
+```
 
 
 ### Vectors
@@ -93,10 +110,55 @@ myFirstVector<-c(1,2,3,4,5)
 myFirstVector
 ```
 
+Now it's your turn. Create a vector named "vector", and have it contain the values 30, 20, 40, 15, and 50.
 
-## Plotting Heart Rate
+```{r}
+#enter your code here
 
 
+```
+
+
+
+### Plotting Heart Rate
+
+Now let's apply some of these concepts and functions above to plot heart rate. We wish to create a simple scatterplot with continuous x and y variables, find the best-fit line, and determine the values for the slope and y-intercept. 
+
+```{r}
+#start by entering a vector of the x-values
+x<-c(0, 20, 40, 60, 80, 100, 120)
+#and one for the y-values (in order)
+y1<-c(0, 24, 50, 70, 96, 121, 124)
+#then plot y against x 
+#the operator "~" means "value on the left depends upon value on the right"... or "y1 is a function of x": 
+plot(y1~x)
+
+
+```
+
+We can add additional information to the plot, including specific x and y axis limits, axes labels, and a title.
+
+```{r}
+#if you want to adjust the axis limits, add labels, and a title
+
+plot(y1~x, xlim=c(0,120), ylim=c(0,140), main="Greg's heart beats", xlab="time in seconds", ylab = "number of heartbeats")
+
+
+```
+
+
+
+```{r}
+# in order to run the abline function below, you must first run the plot function:
+plot(y1~x, xlim=c(0,120), ylim=c(0,140), main="Greg's heart beats", xlab="time in seconds", ylab = "number of heartbeats")
+
+#to add the line, setting the y interect at zero, and get its slope, fit a linear model to the data and store the results in a variable (named "model" here).
+model<-lm(formula=y1~0+x)
+#add a best-fit line to the graph
+abline (reg=model)
+#type the name of the variable to see values of the slope and y-intercept
+model
+```
 
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
