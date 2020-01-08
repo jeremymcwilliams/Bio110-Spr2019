@@ -5,10 +5,11 @@ output:
   html_notebook: default
 ---
 
-### Intro to R and RStudio Server
+## Intro to R and RStudio Server
 
+(flush this out.....)
 
-
+## Coding with R
 
 ### Comments
 
@@ -161,16 +162,49 @@ model
 ```
 
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+You can plot a second set of values by first creating another vector:
 
 ```{r}
-plot(cars)
+#to add another set of points and another line...
+y2<-c(0, 28, 58, 80, 100, 135, 140)
+
+
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+Now we can use the "matplot" function, which lets you plot multiple columns or sets of data:
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+matplot(x=x, y=cbind(y1,y2), type="p", col=c("red", "green"), pch=c(16,16), main="Greg's heart rate increases with exercise", xlab="time in seconds", ylab="resting beats-red and exercising beats-green")
+
+```
+
+
+
+
+----- Last stuff below, explain better.
+
+
+```{r}
+
+plot(y1~x, xlim=c(0,120), ylim=c(0,140), main="Greg's heart beats", xlab="time in seconds", ylab = "number of heartbeats")
+
+
+#repeat the linear model for y1
+model<-lm(y1~0+x)
+#plot its line in red
+abline (model, col="red")
+#and now the model for y2
+model2<-lm(y2~0+x)
+#and a green line for it
+abline(model2, col="green")
+#and to get the new slope and intercept
+model2
+
+#to add a legend, first need coordinates of the legend, c(“labels”), lty determines symbols with 1 = lines, lwd determines width of lines, colors 
+legend(0,140, c("exercising heartrate", "resting heartrate"), lty=c(1,1), lwd=c(2.5, 2.5), col=c("green", "red") )
+
+
+```
+
+
